@@ -16,6 +16,10 @@ export const SocketContextProvider = ({ children }) => {
 	useEffect(() => {
 		if (authUser) {
 			const socket = io("https://chat-app-3efn.onrender.com", {
+				withCredentials: true,
+				extraHeaders: {
+					"my-custom-header": "abcd"
+				},
 				query: {
 					userId: authUser._id,
 				},
